@@ -1,0 +1,65 @@
+{
+  "name": "neconfig",
+  "version": "1.0.0",
+  "description": "Flexible configuration module for Nest",
+  "author": "Maxim Pyshko <maximpyshko@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "precommit": "npm run format && npm run lint && npm run test",
+    "prepublish": "npm run build",
+    "publish": "npm publish --access public",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:integration": "jest --config ./test/jest-e2e.json"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^6.0.0",
+    "@nestjs/core": "^6.0.0",
+    "reflect-metadata": "^0.1.12"
+  },
+  "devDependencies": {
+    "@nestjs/common": "6.3.0",
+    "@nestjs/core": "6.3.0",
+    "@nestjs/platform-express": "6.3.0",
+    "@nestjs/testing": "6.0.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/jest": "23.3.13",
+    "@types/node": "10.12.18",
+    "@types/supertest": "2.0.7",
+    "jest": "23.6.0",
+    "prettier": "1.15.3",
+    "reflect-metadata": "0.1.12",
+    "rimraf": "2.6.2",
+    "rxjs": "6.5.2",
+    "supertest": "3.4.1",
+    "ts-jest": "24.0.2",
+    "tslint": "5.16.0",
+    "typescript": "3.4.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/maximpyshko/neconfig.git"
+  },
+  "homepage": "https://bitbucket.org/maximpyshko/neconfig#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
+}
