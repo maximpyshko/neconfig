@@ -4,7 +4,7 @@ Neconfig - configuration module for [Nest](https://github.com/nestjs/nest).
 
 ## Features
 
-- Support multiply env files (using dotenv)
+- Support multiple env files (using dotenv)
 - Support env variables
 - Support js objects
 - Throwing error for undefined required variable
