@@ -2,6 +2,9 @@
 
 Neconfig - configuration module for [Nest](https://github.com/nestjs/nest).
 
+[![NPM version]https://img.shields.io/npm/v/neconfig.svg?style=flat-square](https://www.npmjs.com/package/neconfig)
+[![LICENSE](https://img.shields.io/npm/l/neconfig.svg?style=flat-square](LICENSE)
+
 ## Features
 
 - Support multiple env files (using dotenv)
