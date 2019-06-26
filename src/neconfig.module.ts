@@ -13,10 +13,7 @@ export class NeconfigModule {
         return new HashConfigReader(reader.data);
       } else if (reader.name === 'env') {
         let hash = process.env;
-        if (reader.file) {
-          if (!fs.existsSync(reader.file)) {
-            throw new Error(reader.file + ' does not exist');
-          }
+        if (reader.file && fs.existsSync(reader.file)) {
           const env = dotenv.parse(fs.readFileSync(reader.file));
           hash = { ...hash, ...env };
         }
