@@ -7,8 +7,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "precommit": "npm run format && npm run lint && npm run test && npm run test:integration",
-    "prepublish": "npm run build",
-    "publish": "npm publish --access public",
+    "prepublishOnly": "npm run build",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
