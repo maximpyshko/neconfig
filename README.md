@@ -2,8 +2,12 @@
 
 Neconfig - configuration module for [Nest](https://github.com/nestjs/nest).
 
-[![NPM version]https://img.shields.io/npm/v/neconfig.svg?style=flat-square](https://www.npmjs.com/package/neconfig)
-[![LICENSE](https://img.shields.io/npm/l/neconfig.svg?style=flat-square](LICENSE)
+<a href="https://www.npmjs.com/package/neconfig">
+   <img src="https://img.shields.io/npm/v/neconfig.svg?style=flat-square" alt="NPM Version" />
+</a>
+<a href="https://www.npmjs.com/package/neconfig">
+   <img src="https://img.shields.io/npm/l/neconfig.svg?style=flat-square" alt="Package License" />
+</a>
 
 ## Features
 
