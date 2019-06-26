@@ -1,25 +1,15 @@
 import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 import { DynamicModule, Module, Provider } from '@nestjs/common';
-import { NeconfigModuleOptions } from './interfaces';
+import { NeconfigModuleOptions, ReaderOptions } from './interfaces';
 import { ConfigReader, HashConfigReader } from './readers';
 import { MultiReader } from './readers/multi-reader';
 
 @Module({})
 export class NeconfigModule {
   static register(options: NeconfigModuleOptions): DynamicModule {
-    const readers: ConfigReader[] = options.readers.map(reader => {
-      if (reader.name === 'hash') {
-        return new HashConfigReader(reader.data);
-      } else if (reader.name === 'env') {
-        let hash = process.env;
-        if (reader.file && fs.existsSync(reader.file)) {
-          const env = dotenv.parse(fs.readFileSync(reader.file));
-          hash = { ...hash, ...env };
-        }
-        return new HashConfigReader(hash);
-      }
-      throw new Error('Unknown reader: ' + reader);
+    const readers: ConfigReader[] = options.readers.map(readerOptions => {
+      return new HashConfigReader(this.provideData(readerOptions));
     });
     const configProvider: Provider = {
       provide: ConfigReader,
@@ -31,5 +21,22 @@ export class NeconfigModule {
       providers: [configProvider],
       exports: [configProvider],
     };
+  }
+
+  private static provideData(options: ReaderOptions): { [p: string]: any } {
+    switch (options.name) {
+      case 'hash':
+        return options.data;
+      case 'env': {
+        let data = process.env;
+        if (options.file && fs.existsSync(options.file)) {
+          const env = dotenv.parse(fs.readFileSync(options.file));
+          data = { ...data, ...env };
+        }
+        return data;
+      }
+      default:
+        throw new Error(`Can't provide reader for ${options}`);
+    }
   }
 }
