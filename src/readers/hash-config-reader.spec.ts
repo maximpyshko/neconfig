@@ -29,12 +29,20 @@ describe('HashConfigReader', () => {
 
   describe('getBoolean', () => {
     it('should return value', () => {
-      reader = new HashConfigReader({ t: true, f: false });
+      reader = new HashConfigReader({ t: true, t2: 'trUe', t3: 'yEs', t4: '1', t5: 1, f: false, f2: 'fAlse', f3: 'No', f4: '0', f5: 0 });
       expect(reader.getBoolean('t')).toBe(true);
+      expect(reader.getBoolean('t2')).toBe(true);
+      expect(reader.getBoolean('t3')).toBe(true);
+      expect(reader.getBoolean('t4')).toBe(true);
+      expect(reader.getBoolean('t5')).toBe(true);
       expect(reader.getBoolean('f')).toBe(false);
+      expect(reader.getBoolean('f2')).toBe(false);
+      expect(reader.getBoolean('f3')).toBe(false);
+      expect(reader.getBoolean('f4')).toBe(false);
+      expect(reader.getBoolean('f5')).toBe(false);
     });
     it('should return null', () => {
-      reader = new HashConfigReader({ a: 'just a string', b: 1, c: {} });
+      reader = new HashConfigReader({ a: 'just a string', b: 2, c: {} });
       expect(reader.getBoolean('someValue')).toBeUndefined();
       expect(reader.getBoolean('a')).toBeUndefined();
       expect(reader.getBoolean('b')).toBeUndefined();
