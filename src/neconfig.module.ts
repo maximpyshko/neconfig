@@ -28,12 +28,11 @@ export class NeconfigModule {
       case 'hash':
         return options.data;
       case 'env': {
-        let data = process.env;
         if (options.file && fs.existsSync(options.file)) {
           const env = dotenv.parse(fs.readFileSync(options.file));
-          data = { ...data, ...env };
+          return { ...env, ...process.env };
         }
-        return data;
+        return process.env;
       }
       default:
         throw new Error(`Can't provide reader for ${options}`);
