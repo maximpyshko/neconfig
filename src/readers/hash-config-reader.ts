@@ -1,7 +1,7 @@
 import { ConfigReader, ReaderDataType } from './config-reader';
 
-const truthyValues = ['true', 'yes', 'y', '1', 1];
-const falsyValues = ['false', 'no', 'n', '0', 0];
+const truthyValues = [true, 'true', 'yes', 'y', '1', 1];
+const falsyValues = [false, 'false', 'no', 'n', '0', 0];
 
 export class HashConfigReader extends ConfigReader {
   constructor(private readonly map: { [key: string]: any }) {
@@ -22,9 +22,6 @@ export class HashConfigReader extends ConfigReader {
   getBoolean(key: string, defaultValue: boolean): boolean;
   getBoolean(key: string, defaultValue?: boolean): boolean | undefined {
     let value = this.map[key];
-    if (typeof value === 'boolean') {
-      return value;
-    }
     if (typeof value === 'string') {
       value = value.toLowerCase();
     }
