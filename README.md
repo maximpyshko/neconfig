@@ -225,7 +225,7 @@ $ npm start
 
 - First reader `(1)` sets `HOST` to `localhost` and `PORT` to `3000`
 - Second reader `(2)` overrides `HOST` to `myhost.com`, `PORT` to `80` and adds new key `APP_NAME`
-- Third reader `(3)` ovverides `HOST` to `0.0.0.0` and `PORT` to `4000`
+- Third reader `(3)` overrides `HOST` to `0.0.0.0` and `PORT` to `4000`
 
 If you remove `dev.env` file you will see:
 
