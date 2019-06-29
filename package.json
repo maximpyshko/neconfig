@@ -1,6 +1,6 @@
 {
   "name": "neconfig",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Configuration module for Nest.js",
   "author": "Maxim Pyshko <maximpyshko@gmail.com>",
   "license": "MIT",
