@@ -2,7 +2,7 @@
 
 ## Description
 
-Neconfig - configuration module for [Nest](https://github.com/nestjs/nest).
+Neconfig - configuration module for [Nestjs](https://github.com/nestjs/nest).
 
 <a href="https://www.npmjs.com/package/neconfig">
    <img src="https://img.shields.io/npm/v/neconfig.svg?style=flat-square" alt="NPM Version" />

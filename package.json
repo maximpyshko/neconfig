@@ -1,7 +1,7 @@
 {
   "name": "neconfig",
   "version": "1.0.7",
-  "description": "Flexible configuration module for Nest",
+  "description": "Configuration module for Nest.js",
   "author": "Maxim Pyshko <maximpyshko@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -56,6 +56,11 @@
     "testEnvironment": "node"
   },
   "main": "index.js",
+  "keywords": [
+    "nestjs",
+    "environment",
+    "config"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/maximpyshko/neconfig.git"
