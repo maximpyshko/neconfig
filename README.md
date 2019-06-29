@@ -11,6 +11,10 @@ Neconfig - configuration module for [Nest](https://github.com/nestjs/nest).
    <img src="https://img.shields.io/npm/l/neconfig.svg?style=flat-square" alt="Package License" />
 </a>
 
+## Example
+
+[neconfig-examples](https://github.com/maximpyshko/neconfig-examples)
+
 ## Installation
 
 ```bash
@@ -46,77 +50,6 @@ npm i neconfig
     const logsEnabled: boolean | undefined = config.getBoolean('logs_enabled');
     const logsEnabled2: boolean = config.getBoolean('logs_enabled', true);
     const logsEnabled3: boolean = config.getBooleanOrThrow('logs_enabled');
-```
-
-## Example
-
-### src/app.module.ts
-
-```typescript
-import { NeconfigModule } from 'neconfig';
-// import ...
-
-@Module({
-  imports: [
-    NeconfigModule.register({
-      readers: [ // merge two readers.
-        {
-          name: 'hash', // simple config
-          data: {
-            someData: 'Some data',
-            someOtherData: 4160,
-          },
-        },
-        {
-          name: 'env', // env reader
-          file: path.join(process.cwd(), '.env'), // optional, allows to read from .env file in project root (using dotenv)
-        },
-        { // overrides prev readers from dev.env
-          name: 'env',
-          file: path.join(process.cwd(), 'dev.env'),
-        },
-      ],
-    }),
-  ],
-  providers: [AppConfig],
-})
-export class AppModule {}
-```
-
-### src/app.config.ts
-
-```typescript
-import { ConfigReader } from 'neconfig';
-// import ...
-
-@Injectable()
-class AppConfig {
-   readonly host: string;
-   readonly port: number;
-   readonly secret: string;
-
-   constructor(config: ConfigReader) {
-     this.host = config.getString('HOST', 'localhost');
-     this.port = config.getInt('PORT', 3000);
-     this.secret = config.getStringOrThrow('SECRET', 'Please set app secret!');
-   }
-}
-```
-
-### .env
-
-```dotenv
-PORT = 4000
-```
-
-### src/main.ts
-
-```typescript
-(async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const config = app.get(AppConfig); // using config
-  await app.listen(config.port, config.host);
-})();
 ```
 
 ## Types
