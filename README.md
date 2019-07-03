@@ -56,7 +56,7 @@ npm i neconfig
 
 - `getString` reads any thing that have toString() method, returns undefined otherwise
 - `getInt` parses value using `parseInt(value, 10)`, returns undefined if NaN
-- `getNumber` parses value using `parseFloat(value, 10)` , returns undefined if NaN
+- `getNumber` parses value using `parseFloat(value)`, returns undefined if NaN
 - `getBoolean` parses value with checks
 
 ```bash
