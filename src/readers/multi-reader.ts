@@ -11,25 +11,25 @@ export class MultiReader extends ConfigReader {
   getString(key: string): string | undefined;
   getString(key: string, defaultValue: string): string;
   getString(key: string, defaultValue?: string): string | undefined {
-    return this.findOne(defaultValue, reader => reader.getString(key, defaultValue!));
+    return this.findOne(defaultValue, reader => reader.getString(key));
   }
 
   getBoolean(key: string): boolean | undefined;
   getBoolean(key: string, defaultValue: boolean): boolean;
   getBoolean(key: string, defaultValue?: boolean): boolean | undefined {
-    return this.findOne(defaultValue, reader => reader.getBoolean(key, defaultValue!));
+    return this.findOne(defaultValue, reader => reader.getBoolean(key));
   }
 
   getInt(key: string): number | undefined;
   getInt(key: string, defaultValue: number): number;
   getInt(key: string, defaultValue?: number): number | undefined {
-    return this.findOne(defaultValue, reader => reader.getInt(key, defaultValue!));
+    return this.findOne(defaultValue, reader => reader.getInt(key));
   }
 
   getNumber(key: string): number | undefined;
   getNumber(key: string, defaultValue: number): number;
   getNumber(key: string, defaultValue?: number): number | undefined {
-    return this.findOne(defaultValue, reader => reader.getNumber(key, defaultValue!));
+    return this.findOne(defaultValue, reader => reader.getNumber(key));
   }
 
   protected defaultErrorMessage(key: string, dataType: ReaderDataType): string {

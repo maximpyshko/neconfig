@@ -1,6 +1,6 @@
 import { ConfigReader } from './config-reader';
-import { MultiReader } from './multi-reader';
 import { HashConfigReader } from './hash-config-reader';
+import { MultiReader } from './multi-reader';
 
 describe('MultiReader', () => {
   let reader: ConfigReader;
@@ -21,5 +21,20 @@ describe('MultiReader', () => {
   it('should read in back order', () => {
     reader = new MultiReader([new HashConfigReader({ i: 1 }), new HashConfigReader({ i: 2 }), new HashConfigReader({ i: 3 })]);
     expect(reader.getInt('i')).toBe(3);
+  });
+
+  it('should use last available value', () => {
+    reader = new MultiReader([
+      new HashConfigReader({ i: 1 }),
+      new HashConfigReader({ i: 2 }),
+      new HashConfigReader({ c: 'test' }),
+      new HashConfigReader({}),
+    ]);
+    expect(reader.getInt('i')).toBe(2);
+    expect(reader.getString('c')).toBe('test');
+    expect(reader.getInt('i', 5)).toBe(2);
+    expect(reader.getString('c', 'default for test')).toBe('test');
+    expect(reader.getIntOrThrow('i')).toBe(2);
+    expect(reader.getStringOrThrow('c')).toBe('test');
   });
 });
