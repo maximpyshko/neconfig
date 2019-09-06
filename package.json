@@ -15,7 +15,8 @@
     "test:integration": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "dotenv": "^8.0.0"
+    "dotenv": "^8.0.0",
+    "rxjs": "^6.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^6.0.0",
