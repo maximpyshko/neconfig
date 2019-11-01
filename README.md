@@ -37,7 +37,7 @@ npm i neconfig
     const host4: string = config.getStringOrThrow('host', 'Host is required'); // specified error message
 
     // Integer
-    const port: number | undefined = config.getInt('prot');
+    const port: number | undefined = config.getInt('port');
     const port2: number = config.getInt('port', 3000);
     const port3: number = config.getIntOrThrow('port');
 
